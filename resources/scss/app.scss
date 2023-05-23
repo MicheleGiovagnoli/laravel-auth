@@ -1,1 +1,37 @@
-@import '~bootstrap/scss/bootstrap'
+@import '~bootstrap/scss/bootstrap';
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+
+    .mycontainer {
+
+
+        .sidebar {
+            height: 100%;
+            width: 20%;
+        }
+
+        .content {
+            width: 80%;
+        }
+    }
+}
+
+#app {
+    height: 100vh;
+
+    .mycontainer {
+
+
+        .sidebar {
+            height: 100%;
+            width: 20%;
+        }
+
+        .content {
+            width: 80%;
+        }
+    }
+}

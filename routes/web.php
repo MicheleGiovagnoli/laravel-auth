@@ -27,7 +27,9 @@ Route::middleware(['auth', 'verified'])
     ->group(function () {
 
         // -> prefix('admin') concatenato con '/'
-        Route::get('/', [ProjectController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+        Route::get('/', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+        //Nella routelist come admin/posts
+        Route::resource('posts', ProjectController::class);
     });
 
 Route::middleware('auth')->group(function () {
