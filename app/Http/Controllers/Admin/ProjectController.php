@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\http\Controllers\Controller;
+use App\Http\Requests\StoreProjectRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
+
 
 class ProjectController extends Controller
 {
@@ -16,7 +18,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::all();
-        return view('admin.index', compact('projects'));
+        return view('admin.posts.index', compact('projects'));
     }
 
     /**
@@ -26,7 +28,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.posts.create');
     }
 
     /**
@@ -35,9 +37,11 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProjectRequest $request)
     {
-        //
+        $validated_data = $request->validate();
+        $newProj = new Project();
+        $newProj->save();
     }
 
     /**
@@ -48,7 +52,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        return view('admin.posts.show', compact('project'));
     }
 
     /**

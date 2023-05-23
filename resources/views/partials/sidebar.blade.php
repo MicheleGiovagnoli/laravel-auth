@@ -17,6 +17,14 @@
                 List
             </a>
         </li>
+        <li class="nav-item">
+            <a href="{{ route('admin.posts.create') }}" class="nav-link text-white">
+                <svg class="bi pe-none me-2" width="16" height="16">
+                    <use xlink:href="#speedometer2"></use>
+                </svg>
+                Create
+            </a>
+        </li>
     </ul>
     <hr>
 </div>
