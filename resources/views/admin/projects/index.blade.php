@@ -10,6 +10,7 @@
                 <th scope="col">Slug</th>
                 <th scope="col">Info</th>
                 <th scope="col">Modifica</th>
+                <th scope="col">Elimina</th>
             </tr>
         </thead>
         <tbody>
@@ -20,10 +21,18 @@
                     <td>{{ $project->content }}</td>
                     <td>{{ $project->slug }}</td>
                     <td>
-                        <a class="btn btn-primary" href="{{ route('admin.posts.show', $project->slug) }}">Info</a>
+                        <a class="btn btn-primary" href="{{ route('admin.projects.show', $project->slug) }}">Info</a>
                     </td>
                     <td>
-                        <a class="btn btn-secondary" href="{{ route('admin.posts.edit', $project->slug) }}">Modifica</a>
+                        <a class="btn btn-secondary" href="{{ route('admin.projects.edit', $project->slug) }}">Modifica</a>
+                    </td>
+                    <td>
+                        <form class="form_delete_post"
+                            action="{{ route('admin.projects.destroy', ['project' => $project->slug]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Elimina</button>
+                        </form>
                     </td>
                 </tr>
             @endforeach

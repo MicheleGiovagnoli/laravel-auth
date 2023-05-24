@@ -1,4 +1,4 @@
-<div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark " style="height:100%;">
+<div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark " style="height:100vh;">
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
@@ -10,7 +10,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('admin.posts.index') }}" class="nav-link text-white">
+            <a href="{{ route('admin.projects.index') }}" class="nav-link text-white">
                 <svg class="bi pe-none me-2" width="16" height="16">
                     <use xlink:href="#speedometer2"></use>
                 </svg>
@@ -18,7 +18,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('admin.posts.create') }}" class="nav-link text-white">
+            <a href="{{ route('admin.projects.create') }}" class="nav-link text-white">
                 <svg class="bi pe-none me-2" width="16" height="16">
                     <use xlink:href="#speedometer2"></use>
                 </svg>

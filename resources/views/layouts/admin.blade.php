@@ -23,7 +23,7 @@
     <div id="app">
 
         @include('partials.header')
-        <div class="mycontainer d-flex" style="height:100%;">
+        <div class="mycontainer d-flex">
             <div class="sidebar">
                 @include('partials.sidebar')
             </div>

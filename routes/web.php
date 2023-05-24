@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Project;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    $posts = Project::all();
     return view('welcome');
 });
 
@@ -29,8 +31,8 @@ Route::middleware(['auth', 'verified'])
         // -> prefix('admin') concatenato con '/'
         Route::get('/', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
         //Nella routelist come admin/posts
-        Route::resource('posts', ProjectController::class)->parameters([
-            'posts' => 'post:slug'
+        Route::resource('projects', ProjectController::class)->parameters([
+            'projects' => 'project:slug'
         ]);
     });
 

@@ -9,7 +9,7 @@
                 <h5 class="card-title">{{ $project->title }}</h5>
                 <p class="card-text">{{ $project->content }}</p>
                 <h5 class="card-title">{{ $project->slug }}</h5>
-                <a href="{{ route('admin.posts.index') }}" class="btn btn-secondary">Come Back</a>
+                <a href="{{ route('admin.projects.index') }}" class="btn btn-secondary">Come Back</a>
                 <a href="#" class="btn btn-secondary">↑</a>
             </div>
         </div>
