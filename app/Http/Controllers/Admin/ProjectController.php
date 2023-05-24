@@ -39,9 +39,16 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        $validated_data = $request->validate();
-        $newProj = new Project();
-        $newProj->save();
+        $validated_data = $request->all();
+
+        $validated_data['slug'] = Project::generateSlug($request->title);
+
+        $checkProject = Project::where('slug', $validated_data['slug'])->first();
+        if ($checkProject) {
+            return back()->withInput()->withErrors(['slug' => 'Impossibile creare lo slug per questo Project, cambia il titolo']);
+        }
+        $newPost = Project::create($validated_data);
+        return redirect()->route('admin.posts.index', ['project' => $newPost->slug])->with('status', 'Post creato con successo!');
     }
 
     /**
@@ -63,7 +70,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view('admin.posts.edit', compact('project'));
     }
 
     /**
@@ -75,7 +82,16 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        $validated_data = $request->all();
+
+        $validated_data['slug'] = Project::generateSlug($request->title);
+
+        $checkProject = Project::where('slug', $validated_data['slug'])->where('id', '<>', $project->id)->first();
+        if ($checkProject) {
+            return back()->withInput()->withErrors(['slug' => 'Impossibile creare lo slug per questo Project, cambia il titolo']);
+        }
+        $newPost = Project::create($validated_data);
+        return redirect()->route('admin.posts.index', ['project' => $newPost->slug])->with('status', 'Post modificato con successo!');
     }
 
     /**

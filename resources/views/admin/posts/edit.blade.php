@@ -1,8 +1,10 @@
 @extends('layouts.admin')
 
 @section('content')
-    <form method="POST" action="{{ route('admin.posts.store') }}">
+    <form method="POST" action="{{ route('admin.posts.update', ['project' => $project->slug]) }}">
+
         @csrf
+        @method('PUT')
 
         <div class="mb-3">
             <label for="title" class="form-label">Titolo</label>
